@@ -20,12 +20,10 @@ namespace EmployeeWageComputation
             Random random = new Random();           // Creating Object of Random Class
             int EmpAttendence = random.Next(0, 2); // Generating random number between 0 and 1
 
-
             if (EmpAttendence == present)  // Using if else statement to check the condition
             {
                 Console.WriteLine("Employee is Present");
                 empWageHrs = 8;
-
             }
             else
             {
