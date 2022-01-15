@@ -13,20 +13,31 @@ namespace EmployeeWageComputation
         /// </summary>
         public static void EmpWageCompute() // Calling Static method 
         {
-            int present = 1;
+            int fulltime = 2;
+            int parttime = 1;
+            int totalWage = 0;
+            int empWageHrs = 0;
+            int empWagePerHrs = 20;
             Random random = new Random();           //Creating Object of Random Class
-            int EmpAttendence = random.Next(0, 2); //Generating random number between 0 and 1
+            int EmpAttendence = random.Next(0, 3); //Generating random number between 0 and 2
 
-
-            if (EmpAttendence == present)  // Using if else statement to check the condition
+            if (EmpAttendence == fulltime)  // Using if else statement to check the condition
             {
                 Console.WriteLine("Employee is Present");
+                empWageHrs = 8;
+            }
+            else if (EmpAttendence == parttime)
+            {
+                Console.WriteLine("Employee is present");
+                empWagePerHrs = 4;
             }
             else
-            {
                 Console.WriteLine("Employee is absent");
 
-            }
+            totalWage = empWageHrs * empWagePerHrs;
+            Console.WriteLine("Employee total Daily Wage: " + totalWage);
+
+        }
         }
     }
 }
