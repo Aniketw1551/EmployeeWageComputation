@@ -33,8 +33,6 @@ namespace EmployeeWageComputation
             }
             totalWage = empWageHrs * empWagePerHrs;
             Console.WriteLine("EMployee total daily wage: " + totalWage);
-
-
         }
     }
 }
