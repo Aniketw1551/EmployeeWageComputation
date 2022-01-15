@@ -9,12 +9,12 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage
     {
         /// <summary>
-        /// UC 2
+        /// UC 3
         /// </summary>
         public static void EmpWageCompute() // Calling Static method 
         {
             int fulltime = 2;
-            int parttime = 1;
+            int partime = 1;
             int totalWage = 0;
             int empWageHrs = 0;
             int empWagePerHrs = 20;
@@ -26,7 +26,7 @@ namespace EmployeeWageComputation
                 Console.WriteLine("Employee is Present");
                 empWageHrs = 8;
             }
-            else if (EmpAttendence == parttime)
+            else if (EmpAttendence == partime)
             {
                 Console.WriteLine("Employee is present");
                 empWagePerHrs = 4;
@@ -36,8 +36,6 @@ namespace EmployeeWageComputation
 
             totalWage = empWageHrs * empWagePerHrs;
             Console.WriteLine("Employee total Daily Wage: " + totalWage);
-
-        }
         }
     }
 }
