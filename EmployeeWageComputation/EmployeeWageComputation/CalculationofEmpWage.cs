@@ -8,53 +8,49 @@ namespace EmployeeWageComputation
 {
     public class CalculationofEmpWage
     {
+        //Instance Variables
+        const int FullTime = 2;
+        const int PartTime = 1;
+        int empHrs;
+        int wagePerHrs = 20;
+        int totalWage;
+  
         /// <summary>
-        /// UC 6
+        /// Uc 6 
+         //In this branch, We Computing Wage For a Employee for a given condition
+         //condition is employee total work hrs becomes 100 or 20 days for a Month     
         /// </summary>
-        public static void EmpWageCompute() // Calling Static method 
+        public void WageCompute()
         {
-            const int FullTime = 2;
-            const int PartTime = 1;
-            const int totalWorkHrs = 100;
-            const int empWagePerHrs = 20;
-            const int totalWorkDays = 20;
-            int totalempWorkHrs = 0;
-            int totalempWorkDay = 0;
-            int empWageHrs = 0;
-            int totalWage = 0;
-            int empWage = 0;
-
-            Random random = new Random();           //Creating Object of Random Class
-
-            int i = 0;
-            while (totalempWorkHrs <= totalWorkHrs && totalempWorkDay <= totalWorkDays)
+            //Local Variables
+            int totalWorkHrs = 100;
+            int totalWorkDay = 20;
+            int totalEmpWorkhr = 0;
+            int totalEmpworkDay = 1;
+            Random randomNum = new Random();          //Creating Object of Random Class
+            //Checking condition        
+            while (totalEmpWorkhr <= totalWorkHrs && totalEmpworkDay <= totalWorkDay)
             {
-                totalempWorkDay++;                       //incrementing Number of Day Worked
-                int EmpAttendence = random.Next(0, 3); //Generating random number between 0 and 2
-
-                switch (EmpAttendence) // Using switch case statement 
+                int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2.
+                switch (empCheck)                    //passing random number into switch to get employee work hours
                 {
                     case FullTime:
-                        empWageHrs = 8;
-                        Console.WriteLine("FullTime Employee is present");
+                        empHrs = 8;
                         break;
                     case PartTime:
-                        empWageHrs = 4;
-                        Console.WriteLine("PartTime employee is present");
+                        empHrs = 4;
                         break;
                     default:
-                        empWageHrs = 0;
-                        Console.WriteLine("Employee is absent");
+                        empHrs = 0;
                         break;
                 }
-
-                totalempWorkHrs = empWageHrs + totalempWorkHrs;
-                i++;                                            // incrementing i value to iteretate loop.
-
-                totalWage = totalempWorkHrs * totalWorkDays * empWagePerHrs;
-                Console.WriteLine("Employee total wage is: " + totalWage);
-                Console.ReadLine();
+                int empWage = empHrs * wagePerHrs;
+                Console.WriteLine("Emp wage for day{0} is: {1}", totalEmpworkDay, empWage);
+                totalWage += empWage;
+                totalEmpWorkhr = empHrs + totalEmpWorkhr;      //Computing Total Work Hrs of Employee Day wise
+                totalEmpworkDay++;                           //incrementing Number of Day Worked
             }
+            Console.WriteLine("\nEmployee total Wage: " + totalWage);
         }
     }
 }
