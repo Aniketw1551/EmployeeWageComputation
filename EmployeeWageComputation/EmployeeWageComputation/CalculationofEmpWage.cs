@@ -9,24 +9,37 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage
     {
         /// <summary>
-        /// UC 3
+        /// UC 5
         /// </summary>
         public static void EmpWageCompute() // Calling Static method 
         {
-            int present = 1;
+            const int FullTime = 2;
+            const int PartTime = 1;
+            const int empWagePerHrs = 20;
+            const int empWorkPerMonth = 20;
+            int empWageHrs = 0;
+            int totalWage = 0;
             Random random = new Random();           //Creating Object of Random Class
-            int EmpAttendence = random.Next(0, 2); //Generating random number between 0 and 1
+            int EmpAttendence = random.Next(0, 3); //Generating random number between 0 and 2
 
-
-            if (EmpAttendence == present)  // Using if else statement to check the condition
+            switch (EmpAttendence) // Using switch case statement 
             {
-                Console.WriteLine("Employee is Present");
+                case FullTime:
+                    empWageHrs = 8;
+                    Console.WriteLine("FullTime Employee is present");
+                    break;
+                case PartTime:
+                    empWageHrs = 4;
+                    Console.WriteLine("PartTime employee is present");
+                    break;
+                default:
+                    empWageHrs = 0;
+                    Console.WriteLine("Employee is absent");
+                    break;
             }
-            else
-            {
-                Console.WriteLine("Employee is absent");
-
-            }
+            totalWage = empWorkPerMonth * empWageHrs * empWagePerHrs;
+            Console.WriteLine("Employee total monthly wage is: " + totalWage);
+            Console.ReadLine();
         }
     }
 }
