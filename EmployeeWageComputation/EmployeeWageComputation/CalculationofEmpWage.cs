@@ -9,7 +9,7 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage
     {
         /// <summary>
-        /// UC 1
+        /// UC 3
         /// </summary>
         public static void EmpWageCompute() // Calling Static method 
         {
