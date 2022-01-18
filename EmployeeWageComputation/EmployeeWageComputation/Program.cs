@@ -11,7 +11,8 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
          Console.WriteLine("Welcome to EmployeeWageComputation program"); // printing message on console 
-          CalculationofEmpWage.EmpWageCompute; // calling static method using class
+         CalculationofEmpWage empWage = new CalculationofEmpWage();
+          empWage.EmpWageCompute(); // calling static method using class
             Console.ReadLine();
         }
     }
