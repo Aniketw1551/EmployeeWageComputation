@@ -8,46 +8,44 @@ namespace EmployeeWageComputation
 {
     public class CalculationofEmpWage
     {
-            /// <summary>
-            /// UC 7 
-            /// Computing wage for Employee using class variables and methods
-            /// </summary>
-            /// 
-            //Constant Variables
-            const int FULL_TIME = 2;
-            const int PART_TIME = 1;
-            const int WAGE_PER_HRS = 20;
-            const int TOTAL_WORK_HRS = 100;
-            const int TOTAL_WORK_MONTH = 20;
+        /// <summary>
+        /// UC 8
+        /// Computing wage for employees of multiple companies
+        /// </summary>
+        /// 
+        //Constant Variables
+        const int PART_TIME = 1;
+        const int FULL_TIME = 2;
+        //static variable
+        public static int emphrs;
 
-            //Instanse variables
+        // method to perform Employee Wage Computation program using different parameters
+        public static void WageCompute(string company, int wagePerHrs, int totalWorkHrs, int totalWorkDay)
+        {
+            //Declaring Local Variables
+            int totalWage = 0;
             int totalEmpWorkHr = 0;
-            int totalEmpWorkDay = 1;
-            public static int emphrs;
-            int totalWage;
-
-            // method to perform Employee Wage Computation program
-            public void EmpWageCompute()
+            int totalEmpwrkDay = 1;
+          
+            Random randomNum = new Random();   //Creating Object of Random Class
+                       
+            while (totalEmpWorkHr <= totalWorkHrs && totalEmpwrkDay <= totalWorkDay)
             {
-                Random randomNum = new Random();          //Creating Object of Random Class
-                                                                 
-                while (totalEmpWorkHr <= TOTAL_WORK_HRS && totalEmpWorkDay <= TOTAL_WORK_MONTH)
-                {
-                    int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2
-                    GetEmpHrs(empCheck);                    //calling static method to get emp work hr
-                    int empWage = emphrs * WAGE_PER_HRS;
-                    Console.WriteLine("Emp wage for day{0} is: {1}", totalEmpWorkDay, empWage);
-                    totalWage += empWage;
-                    totalEmpWorkHr = emphrs + totalEmpWorkHr;      //Computing Total Work Hrs of Employee Day wise
-                    totalEmpWorkDay++;                           //incrementing Number of Day Worked
-                }
-                Console.WriteLine("\nEmployee total Wage is: " + totalWage);
+                int empCheck = randomNum.Next(0, 3);     //generating random number from 0 to 2
+                GetEmpHrs(empCheck);                    //calling static method to get emp work hr
+                int empWage = emphrs * wagePerHrs;
+                Console.WriteLine("Emp wage for day{0} is: {1}", totalEmpwrkDay, empWage);
+                totalWage += empWage;
+                totalEmpWorkHr = emphrs + totalEmpWorkHr;      //Computing Total Work Hrs of Employee Day wise
+                totalEmpwrkDay++;                           //incrementing Number of Day Worked.
             }
+            Console.WriteLine("\nEmployee of company:{0} and Total wage is:{1} ", company, totalWage);
+        }
 
            
             public static void GetEmpHrs(int empCheck)  //Static Method to Get Employee work hours
         {
-                switch (empCheck)       //passing random number into switch to get employee work hours
+                switch (empCheck)       //Using switch case to get employee work hours
                 {
                     case FULL_TIME:
                         emphrs = 8;

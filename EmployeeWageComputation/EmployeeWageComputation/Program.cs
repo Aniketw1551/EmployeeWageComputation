@@ -11,8 +11,9 @@ namespace EmployeeWageComputation
         static void Main(string[] args)
         {
          Console.WriteLine("Welcome to EmployeeWageComputation program"); // printing message on console 
-         CalculationofEmpWage empWage = new CalculationofEmpWage();
-          empWage.EmpWageCompute(); // calling static method using class
+            CalculationofEmpWage.WageCompute("Dmart", 50, 110, 44);    //calling static Method with parameters.
+            CalculationofEmpWage.WageCompute("Reliance", 88, 100, 30);
+            CalculationofEmpWage.WageCompute("Amazon", 35, 130, 15);
             Console.ReadLine();
         }
     }
