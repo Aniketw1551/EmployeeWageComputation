@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
+    public interface IComputeEnpWage
+    {
+        void AddCompany(string company, int empRatePerHr, int maxWorkingDays, int maxWorkingHrs);
+        void GetWage();
+        int CalWage(EmpWage emp);
+    }
     public class EmpWage
     {
         public string company;

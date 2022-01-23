@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace EmployeeWageComputation
 {
-    public class CalculationofEmpWage
+    public class CalculationofEmpWage : IComputeEnpWage
     {
         /// <summary>
-        /// UC 10
-        /// Computing wage for employees of multiple companies
+        /// UC 11
+        /// Computing wage for employees of multiple companies using Interface approach
         /// </summary>
  
             //Constant variables    
