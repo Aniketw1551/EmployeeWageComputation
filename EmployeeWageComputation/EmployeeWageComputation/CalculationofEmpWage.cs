@@ -9,10 +9,10 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage
     {
         /// <summary>
-        /// UC 9
+        /// UC 10
         /// Computing wage for employees of multiple companies
         /// </summary>
-        /// 
+ 
             //Constant variables    
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
