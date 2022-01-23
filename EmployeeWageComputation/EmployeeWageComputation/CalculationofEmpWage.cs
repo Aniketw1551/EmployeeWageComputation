@@ -72,7 +72,7 @@ namespace EmployeeWageComputation
             return totalWage;
         }
 
-        //method to calculate  calculate working hours
+        //method to calculate working hours
         public static void GetWorkingHrs(int randomInput)
         {
 
