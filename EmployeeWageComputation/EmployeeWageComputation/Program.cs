@@ -16,6 +16,9 @@ namespace EmployeeWageComputation
             company.AddCompany("Reliance", 88, 100, 30);
             company.AddCompany("Flipkart", 35, 130, 15);
             company.GetWage();
+            Console.WriteLine("Total Wage for Company is: " + company.GetTotalWage("Dmart"));
+            Console.WriteLine("Total Wage for Company is: " + company.GetTotalWage("Reliance"));
+            Console.WriteLine("Total Wage for Company is: " + company.GetTotalWage("Flipkart"));
             Console.ReadLine();
         }
     }
