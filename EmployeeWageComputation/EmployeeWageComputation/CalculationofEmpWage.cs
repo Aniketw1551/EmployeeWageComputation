@@ -9,11 +9,11 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage : IComputeEnpWage
     {
         /// <summary>
-        /// UC 11
+        /// UC 12
         /// Computing wage for employees of multiple companies using Interface approach
         /// </summary>
  
-            //Constant variables    
+            //Constant variables 
             const int FULL_TIME = 1;
             const int PART_TIME = 2;
             //static variables
@@ -21,25 +21,24 @@ namespace EmployeeWageComputation
             int empWage;
             int days = 1;
             int empWorkingHrs = 0;
-            EmpWage[] CompanyRecord = new EmpWage[5];
-            public int numOfCompany = 0;
-            public void AddCompany(string company, int empRatePerHr, int maxWorkingDays, int maxWorkingHrs)
+        //declaring list And dictionary
+        public IList<EmpWage> CompanyEmpWge = new List<EmpWage>();
+        public IDictionary<string, EmpWage> employees = new Dictionary<string, EmpWage>();
+        public void AddCompany(string company, int empRatePerHr, int maxWorkingDays, int maxWorkingHrs)
             {
                 EmpWage emp = new EmpWage(company, empRatePerHr, maxWorkingDays, maxWorkingHrs);
-                this.CompanyRecord[this.numOfCompany] = emp;       //storing details in array with respecting index
-                numOfCompany++;
-            }
-            public void GetWage()
+                CompanyEmpWge.Add(emp);       //storing details in list
+                employees.Add(company, emp);
+        }
+        public void GetWage()
+        {
+            //iterating to get and set total wage 
+            foreach (EmpWage empWage in this.CompanyEmpWge)
             {
-                //looping to get and set total wage for each index value
-                for (int i = 0; i < numOfCompany; i++)
-                {
-                    int result = CalWage(this.CompanyRecord[i]);
-                    this.CompanyRecord[i].SetTotalWage(result);
-                }
+                empWage.SetTotalWage(CalWage(empWage));
             }
-
-            public int CalWage(EmpWage emp)
+        }
+        public int CalWage(EmpWage emp)
             {
                 int totalWage = 0;
 
