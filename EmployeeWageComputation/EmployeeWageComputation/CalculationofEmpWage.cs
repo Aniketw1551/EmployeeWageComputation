@@ -9,26 +9,32 @@ namespace EmployeeWageComputation
     public class CalculationofEmpWage : IComputeEnpWage
     {
         /// <summary>
-        /// UC 12
-        /// Computing wage for employees of multiple companies using Interface approach
+        /// UC 13
+        /// Storing Daily and Total wage 
         /// </summary>
- 
-            //Constant variables 
-            const int FULL_TIME = 1;
-            const int PART_TIME = 2;
-            //static variables
-            static int empHrs = 0;
-            int empWage;
-            int days = 1;
-            int empWorkingHrs = 0;
+
+        //Constant variables 
+        const int FULL_TIME = 1;
+        const int PART_TIME = 2;
+        //static variables
+        static int empHrs = 0;
+        int empWage;
+        int days = 1;
+        int empWorkingHrs = 0;
         //declaring list And dictionary
-        public IList<EmpWage> CompanyEmpWge = new List<EmpWage>();
-        public IDictionary<string, EmpWage> employees = new Dictionary<string, EmpWage>();
+        public IList<EmpWage> CompanyEmpWge;
+        public IDictionary<string, EmpWage> employees;
+        //constructor to initialize list & dictionary
+        public CalculationofEmpWage()
+        {
+            this.CompanyEmpWge = new List<EmpWage>();
+            this.employees = new Dictionary<string, EmpWage>();
+        }
         public void AddCompany(string company, int empRatePerHr, int maxWorkingDays, int maxWorkingHrs)
-            {
-                EmpWage emp = new EmpWage(company, empRatePerHr, maxWorkingDays, maxWorkingHrs);
-                CompanyEmpWge.Add(emp);       //storing details in list
-                employees.Add(company, emp);
+        {
+            EmpWage emp = new EmpWage(company, empRatePerHr, maxWorkingDays, maxWorkingHrs);
+            CompanyEmpWge.Add(emp);       //storing details in list
+            employees.Add(company, emp);
         }
         public void GetWage()
         {
@@ -38,51 +44,51 @@ namespace EmployeeWageComputation
                 empWage.SetTotalWage(CalWage(empWage));
             }
         }
+
         public int CalWage(EmpWage emp)
+        {
+            int totalWage = 0;
+            Random random = new Random();
+            while (empWorkingHrs <= emp.maxWorkingHrs && days <= emp.maxWorkingDays)
             {
-                int totalWage = 0;
 
-                Random random = new Random();
-                while (empWorkingHrs <= emp.maxWorkingHrs && days <= emp.maxWorkingDays)
+                int randomInput = random.Next(0, 3);
+                // calling method to fetch working hours
+                GetWorkingHrs(randomInput);
+                empWage = emp.empRatePerHr * empHrs;
+                //Console.WriteLine("Employee wage for DAy {0} is {1}", days, empWage);
+                totalWage += empWage;
+                empWorkingHrs += empHrs;
+
+                if (empWorkingHrs > emp.maxWorkingHrs)
                 {
-
-                    int randomInput = random.Next(0, 3);
-
-                    GetWorkingHrs(randomInput);
-                    empWage = emp.empRatePerHr * empHrs;
-                    Console.WriteLine("Employee wage for DAy {0} is {1}", days, empWage);
-                    totalWage += empWage;
-                    empWorkingHrs += empHrs;
-
-                    if (empWorkingHrs > emp.maxWorkingHrs)
-                    {
-                        empWorkingHrs = emp.maxWorkingHrs;
-                        break;
-                    }
-                    days++;
-
+                    empWorkingHrs = emp.maxWorkingHrs;
+                    break;
                 }
-                Console.WriteLine("\nEmployee of company : {0} , Total wage is : {1} ", emp.company, totalWage);
-                return totalWage;
+                days++;
+
             }
+            Console.WriteLine("\nEmployee of company : {0} , Total wage is : {1} ", emp.company, totalWage);
+            return totalWage;
+        }
 
-            //method to calculate working hours
-            public static void GetWorkingHrs(int randomInput)
+        //method to calculate  calculate working hours
+        public static void GetWorkingHrs(int randomInput)
+        {
+
+            switch (randomInput)
             {
-
-                switch (randomInput)
-                {
-                    case FULL_TIME:
-                        empHrs = 8;
-                        break;
-                    case PART_TIME:
-                        empHrs = 4;
-                        break;
-                    default:
-                        empHrs = 0;
-                        break;
-                }
+                case FULL_TIME:
+                    empHrs = 8;
+                    break;
+                case PART_TIME:
+                    empHrs = 4;
+                    break;
+                default:
+                    empHrs = 0;
+                    break;
             }
         }
     }
+}
 
